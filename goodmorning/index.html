@@ -122,6 +122,21 @@
         width: 100px;
       }
     }
+    @keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-animate {
+  animation: fadeSlideIn 0.5s ease forwards;
+}
+
   </style>
 </head>
 <body>
@@ -188,6 +203,7 @@
       if (task) {
         const li = document.createElement('li');
         li.textContent = task;
+        li.classList.add('todo-animate'); // 👈 Add the animation class
         document.getElementById('todo-list').appendChild(li);
         input.value = '';
       }
