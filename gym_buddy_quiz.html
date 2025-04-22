@@ -6,18 +6,24 @@
   <title>Gym Buddy Quiz</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-image: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3Bnd3ZuMzU3MTRhNGEyNDJqa3Qzb3piOWF2N2M2dzRkZmtubWoyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cmegx6SssTKmEFEcwj/giphy.gif');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .main-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      flex-direction: column;
+      width: 100vw;
+      position: relative;
     }
 
     .quiz-box {
@@ -27,11 +33,19 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       text-align: center;
       max-width: 400px;
-      transition: transform 0.3s ease-in-out;
+      animation: heartbeat 2s infinite;
     }
 
     .quiz-box:hover {
       transform: translateY(-5px);
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.1); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.1); }
+      70% { transform: scale(1); }
     }
 
     h1 {
@@ -94,7 +108,7 @@
     }
 
     footer {
-      margin-top: auto;
+      text-align: center;
       padding: 1rem;
       font-size: 0.85rem;
       color: #6b7280;
@@ -111,13 +125,15 @@
   </style>
 </head>
 <body>
-  <div class="quiz-box">
-    <h1>So Syeda... would you not be my gym buddy?</h1>
-    <marquee behavior="scroll" direction="left">By the way, Matcha protein powder comes with either option 🍵✨</marquee>
-    <button class="option-btn" onclick="showToast('Good choice 😁')">Yes😁</button>
-    <button class="option-btn" onclick="showToast('Very good choice 💪😩')">Yes 💪😩</button>
-    <div class="heart-hint">There's no wrong answer... just a right one 💫</div>
-    <div id="toast" class="toast"></div>
+  <div class="main-wrapper">
+    <div class="quiz-box">
+      <h1>So Syeda... would you not be my gym buddy?</h1>
+      <marquee behavior="scroll" direction="left">By the way, Matcha protein powder comes with either option 🍵✨</marquee>
+      <button class="option-btn" onclick="showToast('Good choice 😁')">Yes😁</button>
+      <button class="option-btn" onclick="showToast('Very good choice 💪😩')">Yes 💪😩</button>
+      <div class="heart-hint">There's no wrong answer... just a right one 💫</div>
+      <div id="toast" class="toast"></div>
+    </div>
   </div>
 
   <footer>
