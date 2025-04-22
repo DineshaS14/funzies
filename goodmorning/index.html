@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Good Morning</title>
-  <!-- Link to external stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,47 +12,54 @@
   <marquee id="wind-top" behavior="scroll" direction="right" scrollamount="5">
     💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃
   </marquee>
-
-  <!-- Personalized greeting -->
   <h1 id="greeting">Good Morning!</h1>
+  <marquee id="wind-bottom" behavior="scroll" direction="left" scrollamount="5">
+    🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅
+  </marquee>
+  <!-- Centered Content -->
+  <div class="main-center">
+    <!-- Wind animation (bottom) -->
+    <marquee id="wind-bottom" behavior="scroll" direction="right" scrollamount="5">
+      💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃
+    </marquee>
+
+    <!-- Real-time clock display -->
+    <div id="time" class="clock"></div>
+
+    <!-- Animated morning GIFs -->
+    <div class="gif-container">
+      <img src="https://media1.giphy.com/media/1Fm7jEapE18HwS6fkT/giphy.gif" alt="Sunrise GIF" />
+      <img src="https://media.giphy.com/media/hxYfehakIY81nY3yoJ/giphy.gif" alt="Coffee GIF" />
+    </div>
+
+    <!-- To-do list section -->
+    <div class="todo-section">
+      <h2>Create Your To-Do List</h2>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Enter a task" required />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="todo-list"></ul>
+      <button id="download-btn">📥 Save To Your Phone as a TXT File</button>
+    </div>
+  </div>
 
   <!-- Wind animation (bottom) -->
   <marquee id="wind-bottom" behavior="scroll" direction="right" scrollamount="5">
     💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃
   </marquee>
 
-  <!-- Real-time clock display -->
-  <div id="time" class="clock"></div>
-
-  <!-- Animated morning GIFs -->
-  <div class="gif-container">
-    <img src="https://media1.giphy.com/media/1Fm7jEapE18HwS6fkT/giphy.gif" alt="Sunrise GIF" />
-    <img src="https://media.giphy.com/media/hxYfehakIY81nY3yoJ/giphy.gif" alt="Coffee GIF" />
-  </div>
-
-  <!-- To-do list section -->
-  <div class="todo-section">
-    <h2>Create Your To-Do List</h2>
-    <form id="todo-form">
-      <input type="text" id="todo-input" placeholder="Enter a task" required />
-      <button type="submit">Add</button>
-    </form>
-    <ul id="todo-list"></ul>
-    <button id="download-btn">📥 Save To Your Phone as a TXT File</button>
-  </div>
-
   <!-- Inspirational marquee -->
   <marquee behavior="scroll" direction="left" scrollamount="5">
     Have a wonderful day, stay fueled, energized, and attack the day! 💪☀️
   </marquee>
 
-  <!-- Footer section -->
+  <!-- Footer -->
   <footer>
     Connect with me on 
     <a href="https://www.linkedin.com/in/dineshas14/" target="_blank">LinkedIn</a>
   </footer>
 
-  <!-- Link to external JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
