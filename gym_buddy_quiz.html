@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Buddy Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f3f4f6, #e0e7ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .quiz-box {
+      background: #ffffffdd;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .quiz-box:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .option-btn {
+      display: block;
+      background-color: #c7d2fe;
+      color: #1f2937;
+      border: none;
+      border-radius: 12px;
+      padding: 0.8rem 1.5rem;
+      margin: 0.5rem auto;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .option-btn:hover {
+      background-color: #a5b4fc;
+      transform: scale(1.05);
+    }
+
+    .heart-hint {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-box">
+    <h1>So Syeda... would you not be my gym buddy?</h1>
+    <button class="option-btn">Yes😁</button>
+    <button class="option-btn">Yes 💪😩</button>
+    <div class="heart-hint">There's no wrong answer... just a right one 💫</div>
+  </div>
+</body>
+</html>
