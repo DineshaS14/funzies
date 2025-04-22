@@ -14,6 +14,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      flex-direction: column;
     }
 
     .quiz-box {
@@ -82,16 +83,43 @@
       visibility: visible;
       opacity: 1;
     }
+
+    marquee {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    footer a {
+      color: #6b7280;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="quiz-box">
-    <h1>So... would you not be my gym buddy?</h1>
+    <h1>So Syeda... would you not be my gym buddy?</h1>
+    <marquee behavior="scroll" direction="left">By the way, Matcha protein powder comes with either option 🍵✨</marquee>
     <button class="option-btn" onclick="showToast('Good choice 😁')">Yes😁</button>
     <button class="option-btn" onclick="showToast('Very good choice 💪😩')">Yes 💪😩</button>
     <div class="heart-hint">There's no wrong answer... just a right one 💫</div>
     <div id="toast" class="toast"></div>
   </div>
+
+  <footer>
+    <a href="https://www.instagram.com/1n1t_shair/" target="_blank">@1n1t_shair on Instagram</a>
+  </footer>
 
   <script>
     function showToast(message) {
@@ -105,4 +133,3 @@
   </script>
 </body>
 </html>
-
