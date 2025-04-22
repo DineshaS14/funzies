@@ -59,14 +59,50 @@
       font-size: 0.9rem;
       color: #6b7280;
     }
+
+    .toast {
+      visibility: hidden;
+      min-width: 200px;
+      margin-top: 1rem;
+      background-color: #4b5563;
+      color: #fff;
+      text-align: center;
+      border-radius: 12px;
+      padding: 12px;
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
   <div class="quiz-box">
-    <h1>So Syeda... would you not be my gym buddy?</h1>
-    <button class="option-btn">Yes😁</button>
-    <button class="option-btn">Yes 💪😩</button>
+    <h1>So... would you not be my gym buddy?</h1>
+    <button class="option-btn" onclick="showToast('Good choice 😁')">Yes😁</button>
+    <button class="option-btn" onclick="showToast('Very good choice 💪😩')">Yes 💪😩</button>
     <div class="heart-hint">There's no wrong answer... just a right one 💫</div>
+    <div id="toast" class="toast"></div>
   </div>
+
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = 'toast show';
+      setTimeout(() => {
+        toast.className = 'toast';
+      }, 2500);
+    }
+  </script>
 </body>
 </html>
+
