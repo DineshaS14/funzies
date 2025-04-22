@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Good Morning</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://media1.giphy.com/media/1Fm7jEapE18HwS6fkT/giphy.gif') center/cover no-repeat;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+
+    #time {
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+
+    .gif-container {
+      margin-top: 2em;
+    }
+
+    .gif-container img {
+      width: 150px;
+      height: auto;
+      margin: 0 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      #time {
+        font-size: 1.5em;
+      }
+
+      .gif-container img {
+        width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="greeting">Good Morning!</h1>
+  <div id="time"></div>
+  <div class="gif-container">
+    <img src="https://media1.giphy.com/media/1Fm7jEapE18HwS6fkT/giphy.gif" alt="Sunrise GIF" />
+    <img src="https://media.giphy.com/media/hxYfehakIY81nY3yoJ/giphy.gif" alt="Coffee GIF" />
+  </div>
+
+  <script>
+    // Function to update the time every second
+    function updateTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Function to personalize the greeting
+    function personalizeGreeting() {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name');
+      if (name) {
+        const greeting = document.getElementById('greeting');
+        greeting.textContent = `Good Morning, ${decodeURIComponent(name)}!`;
+      }
+    }
+
+    // Initialize functions on page load
+    personalizeGreeting();
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
