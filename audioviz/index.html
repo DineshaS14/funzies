@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Audio Visualizer</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background-color: #111;
+    }
+    #controls {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <input type="file" id="audioFile" accept="audio/*" />
+    <br/><br/>
+    <audio id="audio" controls></audio>
+  </div>
+  <canvas id="visualizer" width="800" height="400"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
