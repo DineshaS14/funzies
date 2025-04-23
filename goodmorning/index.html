@@ -3,63 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Good Morning</title>
+  <title>Daily Journal</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .music-icons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+    }
+
+    .music-icons img {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .music-icons img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
+<div class="music-icons">
+  <div>
+    <img src="venus.png" alt="All of a Sudden" title="All of a Sudden everything becomes alright" onclick="playTrack('https://www.youtube.com/embed/ANkxRGvl1VY?start=60&autoplay=1')">
+    <p>All of a Sudden</p>
+  </div>
+  <div>
+    <img src="mercury.png" alt="😉Special Song☺️" title="Special Song" onclick="toggleMusic()">
+    <p>😉Special Song☺️</p>
+  </div>
+  <div>
+    <img src="saturn.png" alt="Stop Music" title="Stop Music" onclick="stopTrack()">
+    <p>Stop Music</p>
+  </div>
+</div>
 
-  <!-- Wind animation (top) -->
-  <marquee id="wind-top" behavior="scroll" direction="right" scrollamount="5">
-    💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃
-  </marquee>
-  <h1 id="greeting">Good Morning!</h1>
-  <marquee id="wind-bottom" behavior="scroll" direction="left" scrollamount="5">
-    🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅  🕊️  🦅
-  </marquee>
-  <!-- Centered Content -->
-  <div class="main-center">
-    <!-- Wind animation (bottom) -->
-    <marquee id="wind-bottom" behavior="scroll" direction="right" scrollamount="5">
-      💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃
-    </marquee>
+<div class="content-wrapper">
+  <marquee class="marquee delay-1" behavior="scroll" direction="left" id="top-marquee"></marquee>
 
-    <!-- Real-time clock display -->
-    <div id="time" class="clock"></div>
+  <h1 id="greeting">Hello!</h1>
 
-    <!-- Animated morning GIFs -->
-    <div class="gif-container">
-      <img src="https://media1.giphy.com/media/1Fm7jEapE18HwS6fkT/giphy.gif" alt="Sunrise GIF" />
-      <img src="https://media.giphy.com/media/hxYfehakIY81nY3yoJ/giphy.gif" alt="Coffee GIF" />
-    </div>
+  <marquee class="marquee delay-2" behavior="scroll" direction="left" id="sub-marquee"></marquee>
 
-    <!-- To-do list section -->
-    <div class="todo-section">
-      <h2>Create Your To-Do List</h2>
-      <form id="todo-form">
-        <input type="text" id="todo-input" placeholder="Enter a task" required />
-        <button type="submit">Add</button>
-      </form>
-      <ul id="todo-list"></ul>
-      <button id="download-btn">📥 Save To Your Phone as a TXT File</button>
+  <div class="gif-clock-wrapper">
+    <div class="gif-container" id="gif-container"></div>
+    <div class="clock-overlay">
+      <div id="time" class="clock"></div>
+      <div id="date" class="date"></div>
+      <div id="moon-phase" class="moon"></div>
     </div>
   </div>
 
-  <!-- Wind animation (bottom) -->
-  <marquee id="wind-bottom" behavior="scroll" direction="right" scrollamount="5">
-    💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃💨🍃
-  </marquee>
+  <marquee class="marquee delay-3" behavior="scroll" direction="left" id="mid-marquee"></marquee>
 
-  <!-- Inspirational marquee -->
-  <marquee behavior="scroll" direction="left" scrollamount="5">
-    Have a wonderful day, stay fueled, energized, and attack the day! 💪☀️
-  </marquee>
+  <div class="main-center">
+    <div class="todo-section">
+      <h2 id="todo-title">📝 Journal</h2>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Write something kind to yourself..." required />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="todo-list"></ul>
+      <button id="download-btn">📥 Save Your Notes</button>
+    </div>
+  </div>
 
-  <!-- Footer -->
+  <marquee class="marquee delay-4" behavior="scroll" direction="left" id="bottom-marquee"></marquee>
+
   <footer>
-    Connect with me on 
-    <a href="https://www.linkedin.com/in/dineshas14/" target="_blank">LinkedIn</a>
+    <a href="https://dinesha-s-blog-site.vercel.app/" target="_blank">✍️ Write on my blog</a><br>
+    <a href="https://dineshashair.me/" target="_blank">📬 Contact Me</a>
   </footer>
+</div>
 
-  <script src="script.js"></script>
+<iframe
+  id="bg-music"
+  width="0"
+  height="0"
+  frameborder="0"
+  allow="autoplay"
+  allowfullscreen
+  style="position: absolute; left: -9999px; top: -9999px;"
+></iframe>
+
+<script src="script.js"></script>
 </body>
 </html>

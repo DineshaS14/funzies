@@ -1,190 +1,251 @@
 /* === Global Styles === */
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; /* allow page to grow beyond one screen */
-    background-image: url('464.JPEG'); /* Replace with your image */
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    animation: fadeIn 2s ease-in;
-    overflow-x: hidden;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  /* Centered content wrapper */
-  .main-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 2em;
-  }
-  
-  /* === Headings === */
-  h1 {
-    font-size: 3em;
-    margin-bottom: 0.5em;
-  }
-  
-  /* === Clock Styling === */
-  .clock {
-    font-size: 3.5em;
-    font-weight: bold;
-    padding: 0.5em 1em;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    letter-spacing: 0.1em;
-    margin-bottom: 1em;
-    transition: all 0.3s ease;
-  }
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnMyd3hzNXA3cnB5OWxndWoybWJ2MjJsczQ3eDJ4bTd0OWozcnR4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U3qYN8S0j3bpK/giphy.gif') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f8ff;
+  text-align: center;
+  overflow-x: hidden;
+  animation: fadeIn 2s ease-in;
+}
 
-  .clock:hover {
-    transform: scale(1.1);
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === Header === */
+h1 {
+  font-size: 3rem;
+  margin-top: 1rem;
+  color: #f9f9f9;
+  transition: transform 0.3s ease;
+}
+
+h1:hover {
+  transform: scale(1.1);
+}
+
+/* === Main Center Container === */
+.main-center {
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Clock === */
+.clock {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 10px #fff5cc;
+  transition: transform 0.3s ease;
+}
+
+.clock:hover {
+  transform: scale(1.1);
+}
+
+/* === Clock and Date Container === */
+.gif-clock-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.clock-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  padding-top: 2rem;
+}
+
+.date {
+  margin-top: 7rem;
+  font-size: 1.3rem;
+  color: #e6e6fa;
+  font-style: italic;
+  text-shadow: 0 0 5px rgba(255,255,255,0.3);
+}
+
+.moon {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #d8bfd8;
+  font-style: italic;
+}
+
+/* === GIF Section === */
+.gif-container {
+  margin-top: 2em;
+}
+
+.gif-container img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 10px;
+  margin: 1rem 0;
+  transition: transform 0.3s ease;
+}
+
+.gif-container img:hover {
+  transform: scale(1.1);
+}
+
+/* === To-Do Section === */
+.todo-section {
+  margin-top: 2em;
+  text-align: left;
+  max-width: 400px;
+  color: white;
+}
+
+#todo-form {
+  display: flex;
+  gap: 0.5em;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+}
+
+#todo-input:hover {
+  transform: scale(1.05);
+}
+
+button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0b3ff;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #d9a8ff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+ul li {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.todo-animate {
+  animation: fadeSlideIn 0.5s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  /* === GIF Section === */
-  .gif-container {
-    margin-top: 2em;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .gif-container img {
-    width: 150px;
-    height: auto;
-    margin: 0 10px;
-    transition: transform 0.3s ease;
-  }
-  
-  .gif-container img:hover {
-    transform: scale(1.1);
-  }
-  h1:hover {
-    transform: scale(1.1);
-  }
-  todo-input:hover {
-    transform: scale(1.1);
-  }
-  button:hover {
-    transform: scale(1.1);
-  }
-  /* === To-Do Section === */
-  .todo-section {
-    margin-top: 2em;
-    text-align: left;
-    max-width: 400px;
-    color: white;
-  }
-  
-  #todo-form {
-    display: flex;
-    gap: 0.5em;
-  }
-  
-  #todo-input {
-    flex: 1;
-    padding: 0.5em;
-    border-radius: 8px;
-    border: none;
-  }
-  
-  #todo-list {
-    list-style-type: disc;
-    margin-top: 1em;
-    padding-left: 1.5em;
-  }
-  
-  #download-btn {
-    background: #a5b4fc;
-    color: #1f2937;
-    border: none;
-    border-radius: 8px;
-    padding: 0.6em 1.2em;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 1em;
-  }
-  
-  #download-btn:hover {
-    background-color: #818cf8;
-  }
-  
-  .todo-animate {
-    animation: fadeSlideIn 0.5s ease forwards;
-  }
-  
-  @keyframes fadeSlideIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* === Marquee Wind Styling === */
-  marquee {
-    font-size: 1.2em;
-    color: #fff;
-    margin-top: 2em;
-  }
-  
-  #wind-top,
-  #wind-bottom {
-    color: #b9fbc0;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
-    animation: breezeGlow 3s ease-in-out infinite alternate;
-  }
-  
-  @keyframes breezeGlow {
-    0% {
-      text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.15));
-    }
-    100% {
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-      filter: drop-shadow(0 0 10px rgba(242, 222, 5, 0.3));
-    }
-  }
-  
-  /* === Footer Styling === */
-  footer {
-    margin-top: 2em;
-    font-size: 1em;
-    color: #fff;
-  }
-  
-  footer a {
-    color: #fff;
-    text-decoration: underline;
-  }
-  
-  /* === Responsive Adjustments === */
-  @media (max-width: 600px) {
-    h1 { font-size: 2em; }
-    .clock { font-size: 2em; }
-    .gif-container img { width: 100px; }
-  }
-  
-  @media (max-width: 400px) {
-    h1 { font-size: 1.5em; }
-    .clock { font-size: 1.5em; }
-    .gif-container img { width: 80px; }
-    #todo-section { max-width: 90%; }
-  }
-  
+}
+
+/* === Marquee === */
+.marquee {
+  font-size: 1.2rem;
+  color: #ffc0cb;
+  margin-top: 1rem;
+  animation: fadeIn 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+.delay-1 { animation-delay: 0s; }
+.delay-2 { animation-delay: 2s; }
+.delay-3 { animation-delay: 4s; }
+.delay-4 { animation-delay: 6s; }
+
+/* === Music Buttons === */
+.music-icons {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.music-icons img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.music-icons img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  border-radius: 50%;
+}
+
+/* === Footer === */
+footer {
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+footer a {
+  color: #ffc0cb;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  text-shadow: 0 0 8px #fff5f5;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 2em; }
+  .clock { font-size: 2em; }
+  .gif-container img { width: 100px; }
+}
+
+@media (max-width: 400px) {
+  h1 { font-size: 1.5em; }
+  .clock { font-size: 1.5em; }
+  .gif-container img { width: 80px; }
+  .todo-section { max-width: 90%; }
+}
