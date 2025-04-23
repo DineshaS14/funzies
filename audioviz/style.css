@@ -1,4 +1,5 @@
 body {
+  top: 0%;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -9,6 +10,8 @@ body {
   background-color: #000;
 }
 .music-icons {
+  text-shadow: 0 0 5px #39ff14;
+  color: #39ff14;
   position: relative;
   top: 10px;
   left: 10px;
@@ -26,7 +29,19 @@ body {
   align-items: center;
   gap: 5px;
 }
-
+h2 {
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+  color: #39ff14;
+ 
+}
+h4 {
+  text-shadow: 0 0 5px #39ff14, 0 0 5px #39ff14;
+  color: #dcff14;
+  padding-left: 15%;
+}
+nav {
+  flex-direction: row;
+}
 .music-button img {
   width: 60px;
   height: 60px;
@@ -34,6 +49,7 @@ body {
   border-radius: 10px;
   border: 2px solid #fff;
   transition: transform 0.2s;
+  box-shadow: 0 0 3px #39ff14, 0 0 10px #39ff14;
 }
 
 .music-button img:hover {
@@ -47,14 +63,79 @@ body {
   justify-content: center; /* center horizontally */
   align-items: center;     /* center vertically */
   background-color: #000;
+  width: 100%;
 }
 
 canvas {
   background-color: #000;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png'); 
+  background-size: cover;
+  background-blend-mode: multiply;
+  border: #333 5px solid;
+  border-radius: 10px;
+  box-shadow: 0 0 3px #39ff14, 0 0 10px #39ff14;
 }
 
+/* Container for the controls */
 #controls {
-  padding: 10px;
+  display: flex; /* Enables Flexbox layout */
+  flex-direction: row; /* Arranges items in a horizontal row */
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
+  gap: 15px; /* Adds space between items */
+  padding: 5px;
   background-color: #000;
-  border-top: 1px solid #333;
+  border-top: 5px solid #333;
+  color: #39ff14; /* Neon green text */
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+  box-shadow: 0 0 3px #39ff14, 0 0 10px #39ff14;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Style for the wave type selector */
+#waveTypeSelect {
+  background: transparent;
+  border: 1px solid #39ff14;
+  color: #39ff14;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-shadow: 0 0 5px #39ff14;
+  transition: background 0.3s ease;
+}
+
+#waveTypeSelect:hover {
+  background: #39ff14;
+  color: #000;
+  text-shadow: none;
+}
+
+/* Style for the file input */
+#audioFile {
+  background: transparent;
+  border: 1px solid #39ff14;
+  color: #39ff14;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-shadow: 0 0 5px #39ff14;
+  transition: background 0.3s ease;
+}
+
+#audioFile:hover {
+  background: #39ff14;
+  color: #000;
+  text-shadow: none;
+}
+
+/* Style for the audio player */
+#audio {
+  max-width: 600px;
+  filter: drop-shadow(0 0 5px #39ff14);
+  accent-color: #39ff14; /* For modern browsers to color the controls */
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }

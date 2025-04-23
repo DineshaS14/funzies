@@ -16,39 +16,34 @@ analyser.fftSize = 256;
 bufferLength = analyser.frequencyBinCount;
 dataArray = new Uint8Array(bufferLength);
 
+// 🔄 Wave type preference (set 'bars' as default)
+let waveType = 'bars';
+
 // Function to play a song from a path
 function playSong(src) {
-  // 🔧 Fix: Resume AudioContext if it's suspended (due to browser autoplay policy)
-  // Modern browsers often suspend AudioContext until a user gesture occurs.
-  // Without resuming it, audio playback won't start even if play() is called.
   if (audioContext.state === 'suspended') {
     audioContext.resume();
   }
 
-  // 🎵 Set and play the new audio source
   audio.src = src;
   audio.load();
 
-  // ✅ Always catch playback errors (common if autoplay is blocked)
   audio.play().catch(err => {
     console.error("Playback error:", err);
   });
 }
-// Function to draw the audio visualizer
-function draw() {
-  requestAnimationFrame(draw);
 
+// 🎨 Original drawBars (your original visualizer)
+function drawBars() {
   analyser.getByteFrequencyData(dataArray);
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  const barWidth = (canvas.width / bufferLength) * 2.5; // Adjusted for better spacing
+  const barWidth = (canvas.width / bufferLength) * 2.5;
   let x = 0;
 
   for (let i = 0; i < bufferLength; i++) {
-    const barHeight = dataArray[i] * 1.3; // Increased height scaling factor
+    const barHeight = dataArray[i] * 1.6;
 
-    // Create a gradient for each bar
     const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
     gradient.addColorStop(0, `hsl(${i * 2}, 100%, 50%)`);
     gradient.addColorStop(1, '#000');
@@ -60,7 +55,74 @@ function draw() {
   }
 }
 
-// Handle custom file upload
+// 🌊 Optional Sine Wave visualizer
+function drawSineWave() {
+  analyser.getByteTimeDomainData(dataArray);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = '#00ffcc';
+  ctx.beginPath();
+
+  const sliceWidth = canvas.width / bufferLength;
+  let x = 0;
+
+  for (let i = 0; i < bufferLength; i++) {
+    const v = dataArray[i] / 128.0;
+    const y = v * canvas.height / 2;
+
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+
+    x += sliceWidth;
+  }
+
+  ctx.lineTo(canvas.width, canvas.height / 2);
+  ctx.stroke();
+}
+
+// 🪞 Optional mirrored bar visualizer
+function drawMirror() {
+  analyser.getByteFrequencyData(dataArray);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const barWidth = (canvas.width / bufferLength) * 2.5;
+  let x = 0;
+
+  for (let i = 0; i < bufferLength; i++) {
+    const barHeight = dataArray[i] * 1.3;
+
+    const gradient = ctx.createLinearGradient(0, canvas.height / 2 - barHeight, 0, canvas.height / 2 + barHeight);
+    gradient.addColorStop(0, `hsl(${i * 2}, 100%, 50%)`);
+    gradient.addColorStop(1, '#000');
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x, canvas.height / 2 - barHeight, barWidth, barHeight); // top
+    ctx.fillRect(x, canvas.height / 2, barWidth, barHeight);             // bottom
+
+    x += barWidth + 1;
+  }
+}
+
+// 🔁 Master draw loop: delegates based on waveType
+function draw() {
+  requestAnimationFrame(draw);
+
+  switch (waveType) {
+    case 'sine':
+      drawSineWave();
+      break;
+    case 'mirror':
+      drawMirror();
+      break;
+    case 'bars':
+    default:
+      drawBars();
+      break;
+  }
+}
+
+// Handle file upload for custom songs
 audioFileInput.addEventListener('change', function () {
   const file = this.files[0];
   if (!file) return;
@@ -71,5 +133,13 @@ audioFileInput.addEventListener('change', function () {
   audio.play();
 });
 
-// Start the visualizer loop
+// Example: hook up to dropdown with id="waveTypeSelect"
+const waveTypeSelect = document.getElementById('waveTypeSelect');
+if (waveTypeSelect) {
+  waveTypeSelect.addEventListener('change', function () {
+    waveType = this.value;
+  });
+}
+
+// 🚀 Kick off the animation
 draw();

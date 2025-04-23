@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <nav><h2>Audio Visualizer</h2>
+  <h4>Experiment by Dinesha</h4></nav>
   <div class="music-icons" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 10px;">
   <div class="music-button">
     <img src="icons/music (1).png" alt="Wake Me Up" title="Avicii - Wake Me Up (True).mp3" onclick="playSong('songs/Avicii - Wake Me Up (True).mp3')">
@@ -48,15 +50,27 @@
     <img src="icons/music-notes.png" alt="Fairy Tail" title="The power of feeling - Fairy Tail main theme [AMV].mp3" onclick="playSong('songs/The power of feeling - Fairy Tail main theme [AMV].mp3')">
     <p>Fairy Tail</p>
   </div>
+
 </div>
 
   <div class="canvas-wrapper">
   <canvas id="visualizer" width="800" height="400"></canvas>
 </div>
-  <div id="controls">
-    <input type="file" id="audioFile" accept="audio/*">
+<div id="controls">
+  <div>
+    <select id="waveTypeSelect" name="waveType">
+      <option value="bars">Bars</option>
+      <option value="sine">Sine Wave</option>
+      <option value="mirror">Mirrored Spectrum</option>
+    </select>
+  </div>
+  <div>
     <audio id="audio" controls></audio>
   </div>
+  <div>
+    <input type="file" id="audioFile" accept="audio/*">
+  </div>
+</div>
   <script src="script.js"></script>
 </body>
 </html>
