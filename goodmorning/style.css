@@ -38,7 +38,7 @@ h1:hover {
   width: 90%;
   max-width: 700px;
   display: flex;
-  flex-direction: column;
+  
   align-items: center;
   justify-content: center;
 }
@@ -55,7 +55,9 @@ h1:hover {
 .clock:hover {
   transform: scale(1.1);
 }
-
+.content-wrapper {
+  margin-top: 100px;
+}
 /* === Clock and Date Container === */
 .gif-clock-wrapper {
   position: relative;
@@ -195,13 +197,16 @@ ul li {
 
 /* === Music Buttons === */
 .music-icons {
-  position: fixed;
-  top: 15px;
-  right: 15px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 9999;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 1000;
 }
 
 .music-icons img {
@@ -249,3 +254,4 @@ footer a:hover {
   .gif-container img { width: 80px; }
   .todo-section { max-width: 90%; }
 }
+/* === Dark Mode === */
