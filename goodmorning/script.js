@@ -33,7 +33,7 @@ function updateTime() {
       bottom: "Have a wonderful day, stay fueled, energized, and attack the day! 💪☀️"
     });
   } else {
-    greeting.textContent = `Good Evening, ${name} 🌌`;
+    greeting.textContent = `Good Night, ${name} 🌌`;
     gifContainer.innerHTML = `
       <img src="https://media4.giphy.com/media/nbJS250jag85kNv4jT/giphy.gif" alt="Night Cozy GIF" />
     `;
