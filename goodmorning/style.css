@@ -245,13 +245,12 @@ footer a:hover {
 @media (max-width: 600px) {
   h1 { font-size: 2em; }
   .clock { font-size: 2em; }
-  .gif-container img { width: 100px; }
+  .gif-container img { width: 130px; }
 }
 
 @media (max-width: 400px) {
   h1 { font-size: 1.5em; }
   .clock { font-size: 1.5em; }
-  .gif-container img { width: 80px; }
   .todo-section { max-width: 90%; }
 }
 /* === Dark Mode === */

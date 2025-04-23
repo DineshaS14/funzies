@@ -40,7 +40,6 @@ function updateTime() {
     todoTitle.textContent = '🌙 Night Journal — Self-Care Edition';
     updateMarquees({
       top: "🌙 Let your thoughts settle like stardust... you're doing great ✨",
-      sub: "🌙 They say the brain leans 80% toward shadows and only 20% toward light — but love, even the smallest spark, can flip the balance.",
       mid: "💫 You're held in the warmth of the universe — safe, loved, born for a story only your heart can tell. 💜",
       bottom: "Sweet dreams start with sweet thoughts 💭💖 Write yours..."
     });
@@ -49,7 +48,6 @@ function updateTime() {
 
 function updateMarquees({ top, sub, mid, bottom }) {
   document.getElementById('top-marquee').textContent = top;
-  document.getElementById('sub-marquee').textContent = sub;
   document.getElementById('mid-marquee').textContent = mid;
   document.getElementById('bottom-marquee').textContent = bottom;
 }
