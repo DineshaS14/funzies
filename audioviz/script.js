@@ -1,63 +1,75 @@
-const audioFile = document.getElementById('audioFile');
+const audioFileInput = document.getElementById('audioFile');
 const audio = document.getElementById('audio');
 const canvas = document.getElementById('visualizer');
 const ctx = canvas.getContext('2d');
 
-let audioContext;
-let analyser;
-let source;
-let dataArray;
-let bufferLength;
+// Initialize Web Audio API context and elements
+let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let source = audioContext.createMediaElementSource(audio);
+let analyser = audioContext.createAnalyser();
+let dataArray, bufferLength;
 
-audioFile.addEventListener('change', function() {
-  const files = this.files;
-  if (files.length === 0) return;
+// Set up audio graph
+source.connect(analyser);
+analyser.connect(audioContext.destination);
+analyser.fftSize = 256;
+bufferLength = analyser.frequencyBinCount;
+dataArray = new Uint8Array(bufferLength);
 
-  const file = URL.createObjectURL(files[0]);
-  audio.src = file;
+// Function to play a song from a path
+function playSong(src) {
+  // 🔧 Fix: Resume AudioContext if it's suspended (due to browser autoplay policy)
+  // Modern browsers often suspend AudioContext until a user gesture occurs.
+  // Without resuming it, audio playback won't start even if play() is called.
+  if (audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
+
+  // 🎵 Set and play the new audio source
+  audio.src = src;
   audio.load();
-  audio.play();
 
-  if (!audioContext) {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  }
-
-  if (source) {
-    source.disconnect();
-  }
-
-  source = audioContext.createMediaElementSource(audio);
-  analyser = audioContext.createAnalyser();
-  source.connect(analyser);
-  analyser.connect(audioContext.destination);
-  analyser.fftSize = 256;
-  bufferLength = analyser.frequencyBinCount;
-  dataArray = new Uint8Array(bufferLength);
-
-  draw();
-});
-
+  // ✅ Always catch playback errors (common if autoplay is blocked)
+  audio.play().catch(err => {
+    console.error("Playback error:", err);
+  });
+}
+// Function to draw the audio visualizer
 function draw() {
   requestAnimationFrame(draw);
 
   analyser.getByteFrequencyData(dataArray);
 
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  const barWidth = (canvas.width / bufferLength) * 2.5;
+  const barWidth = (canvas.width / bufferLength) * 2.5; // Adjusted for better spacing
   let x = 0;
 
-  for(let i = 0; i < bufferLength; i++) {
-    const barHeight = dataArray[i];
+  for (let i = 0; i < bufferLength; i++) {
+    const barHeight = dataArray[i] * 1.3; // Increased height scaling factor
 
-    const r = barHeight + 25 * (i / bufferLength);
-    const g = 250 * (i / bufferLength);
-    const b = 50;
+    // Create a gradient for each bar
+    const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
+    gradient.addColorStop(0, `hsl(${i * 2}, 100%, 50%)`);
+    gradient.addColorStop(1, '#000');
 
-    ctx.fillStyle = `rgb(${r},${g},${b})`;
-    ctx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
     x += barWidth + 1;
   }
 }
+
+// Handle custom file upload
+audioFileInput.addEventListener('change', function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const fileURL = URL.createObjectURL(file);
+  audio.src = fileURL;
+  audio.load();
+  audio.play();
+});
+
+// Start the visualizer loop
+draw();

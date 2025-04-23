@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #000;
+}
+.music-icons {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.music-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.music-button img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  transition: transform 0.2s;
+}
+
+.music-button img:hover {
+  transform: scale(1.1);
+}
+
+/* NEW: Center canvas within available space */
+.canvas-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  background-color: #000;
+}
+
+canvas {
+  background-color: #000;
+}
+
+#controls {
+  padding: 10px;
+  background-color: #000;
+  border-top: 1px solid #333;
+}

@@ -4,32 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Audio Visualizer</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    canvas {
-      display: block;
-      margin: 0 auto;
-      background-color: #111;
-    }
-    #controls {
-      margin: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="music-icons" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 10px;">
+  <div class="music-button">
+    <img src="icons/music (1).png" alt="Wake Me Up" title="Avicii - Wake Me Up (True).mp3" onclick="playSong('songs/Avicii - Wake Me Up (True).mp3')">
+    <p>Avicii</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music (2).png" alt="Feel Something" title="ILLENIUM, Excision, I Prevail - Feel Something (Lyric Video) 4.mp3" onclick="playSong('songs/ILLENIUM, Excision, I Prevail - Feel Something (Lyric Video) 4.mp3')">
+    <p>ILLENIUM</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music-note.png" alt="Love Is Gone" title="Love Is Gone 4.mp3" onclick="playSong('songs/Love Is Gone 4.mp3')">
+    <p>Love Is Gone</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music-notes.png" alt="Money" title="Pink Floyd - Money (2023 Remaster) 4.mp3" onclick="playSong('songs/Pink Floyd - Money (2023 Remaster) 4.mp3')">
+    <p>Pink Floyd</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music.png" alt="Time" title="Pink Floyd – Time (Official Audio) 4.mp3" onclick="playSong('songs/Pink Floyd – Time (Official Audio) 4.mp3')">
+    <p>Time</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music-note.png" alt="Pond" title="Pond - Man it feels like space again 4.mp3" onclick="playSong('songs/Pond - Man it feels like space again 4.mp3')">
+    <p>Pond</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music-notes.png" alt="RC Avenue" title="RC AVENUE - THE GIRL WILL BE OKAY (Official Visualizer).mp3" onclick="playSong('songs/RC AVENUE - THE GIRL WILL BE OKAY (Official Visualizer).mp3')">
+    <p>RC AVENUE</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music.png" alt="Seven Lions" title="Seven Lions, SLANDER, & Dabin - First Time feat. Dylan Matthew _ Ophelia Records 4.mp3" onclick="playSong('songs/Seven Lions, SLANDER, & Dabin - First Time feat. Dylan Matthew _ Ophelia Records 4.mp3')">
+    <p>Seven Lions</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music-note.png" alt="Tame Impala" title="Tame Impala - Nangs (Audio).mp3" onclick="playSong('songs/Tame Impala - Nangs (Audio).mp3')">
+    <p>Tame Impala</p>
+  </div>
+  <div class="music-button">
+    <img src="icons/music-notes.png" alt="Fairy Tail" title="The power of feeling - Fairy Tail main theme [AMV].mp3" onclick="playSong('songs/The power of feeling - Fairy Tail main theme [AMV].mp3')">
+    <p>Fairy Tail</p>
+  </div>
+</div>
+
+  <div class="canvas-wrapper">
+  <canvas id="visualizer" width="800" height="400"></canvas>
+</div>
   <div id="controls">
-    <input type="file" id="audioFile" accept="audio/*" />
-    <br/><br/>
+    <input type="file" id="audioFile" accept="audio/*">
     <audio id="audio" controls></audio>
   </div>
-  <canvas id="visualizer" width="800" height="400"></canvas>
-
   <script src="script.js"></script>
 </body>
 </html>
