@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Good Evening</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnMyd3hzNXA3cnB5OWxndWoybWJ2MjJsczQ3eDJ4bTd0OWozcnR4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U3qYN8S0j3bpK/giphy.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: #f0f8ff;
+      text-align: center;
+    }
+
+    .main-center {
+      padding: 2rem;
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 700px;
+    }
+
+    #greeting {
+      font-size: 3rem;
+      margin-top: 1rem;
+      color: #f9f9f9;
+    }
+
+    .gif-container img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+
+    .todo-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"] {
+      padding: 0.6rem;
+      font-size: 1rem;
+      width: 60%;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #e0b3ff;
+      color: #000;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    ul li {
+      background: rgba(255, 255, 255, 0.1);
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+
+    marquee {
+      font-size: 1.2rem;
+      color: #ffc0cb;
+      margin-top: 1rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+
+    footer a {
+      color: #add8e6;
+      text-decoration: none;
+    }
+
+    .clock {
+      margin: 1rem 0;
+      font-size: 2rem;
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    🌙 Let your thoughts settle like stardust... you're doing great ✨
+  </marquee>
+  <h1 id="greeting">Good Evening, Star Gazer 🌌</h1>
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    🌙 They say the brain leans 80% toward shadows and only 20% toward light — but love, even the smallest spark of it, can flip the balance. You've already won by believing in better. You've got this — and I believe in you." 💫💖✨
+  </marquee>
+  <div class="main-center">
+    <div class="gif-container">
+      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW9rZGVvNWd2MWd0M3RsYzV2YzQ3OHV5cXI2djZ1ZDl4NmF2YXQ0aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nbJS250jag85kNv4jT/giphy.gif" alt="Night Cozy GIF" />
+    </div>
+    <div id="time" class="clock"></div>
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+        💫 You're held in the warmth of the universe — safe, deeply loved, and born to live a story that was written in stars just for you, one and only your heart could tell. 💜
+      </marquee>
+    <div class="todo-section">
+      <h2>🌙 Night Journal — With Self-Care In Mind</h2>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Write something kind to yourself..." required />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="todo-list"></ul>
+      <button id="download-btn">📥 Save Your Night Notes</button>
+    </div>
+  </div>
+
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    Sweet dreams start with sweet thoughts 💭💖 write yours in the Night Notes...
+  </marquee>
+
+  <footer>
+    <a href="https://dinesha-s-blog-site.vercel.app/" target="_blank" style="color: #ffc0cb; text-decoration: none; font-weight: bold;">
+        ✍️ Write on my blog
+      </a>
+      <a href="https://dineshashair.me/" target="_blank" style="color: #ffc0cb; text-decoration: none; font-weight: bold;">
+        📬 Contact Me 
+      </a>
+      
+  </footer>
+
+  <!-- Background music -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/AtPrjYp75uA?autoplay=1&loop=1&playlist=AtPrjYp75uA" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+
+  <script>
+    // Clock script
+    const timeElement = document.getElementById('time');
+    function updateClock() {
+      const now = new Date();
+      timeElement.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Journal logic
+    const form = document.getElementById('todo-form');
+    const input = document.getElementById('todo-input');
+    const list = document.getElementById('todo-list');
+    const downloadBtn = document.getElementById('download-btn');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const li = document.createElement('li');
+      li.textContent = input.value;
+      list.appendChild(li);
+      input.value = '';
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const entries = Array.from(list.children).map(li => li.textContent).join('\n');
+      const blob = new Blob([entries], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'night_journal.txt';
+      a.click();
+    });
+  </script>
+</body>
+</html>
