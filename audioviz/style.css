@@ -77,22 +77,96 @@ canvas {
 }
 
 /* Container for the controls */
+/* Base styles for large screens (default) */
 #controls {
-  display: flex; /* Enables Flexbox layout */
-  flex-direction: row; /* Arranges items in a horizontal row */
-  justify-content: center; /* Centers items horizontally */
-  align-items: center; /* Centers items vertically */
-  gap: 15px; /* Adds space between items */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
   padding: 5px;
   background-color: #000;
   border-top: 5px solid #333;
-  color: #39ff14; /* Neon green text */
+  color: #39ff14;
   text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
   box-shadow: 0 0 3px #39ff14, 0 0 10px #39ff14;
   position: fixed;
   bottom: 0;
   z-index: 1000;
   width: 100%;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 992px) {
+  #controls {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .music-icons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .music-button img {
+    width: 50px;
+    height: 50px;
+  }
+
+  canvas {
+    width: 90%;
+    height: auto;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  #controls {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .music-button img {
+    width: 40px;
+    height: 40px;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  h2, h4 {
+    font-size: 1.2em;
+    text-align: center;
+  }
+}
+
+/* Extra small screens (small phones) */
+@media (max-width: 480px) {
+  #controls {
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .music-button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  h2, h4 {
+    font-size: 1em;
+    text-align: center;
+  }
 }
 
 /* Style for the wave type selector */
