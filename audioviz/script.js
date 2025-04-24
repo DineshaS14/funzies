@@ -32,6 +32,59 @@ function playSong(src) {
     console.error("Playback error:", err);
   });
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.querySelector('.canvas-wrapper');
+  const canvas = document.getElementById('visualizer');
+
+  wrapper.addEventListener('pointerup', (e) => {
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const canvasRect = canvas.getBoundingClientRect();
+
+    const clickX = e.clientX - wrapperRect.left;
+    const clickY = e.clientY - wrapperRect.top;
+
+    // Check if the click/tap is outside the canvas
+    const isOutsideCanvas =
+      e.clientX < canvasRect.left ||
+      e.clientX > canvasRect.right ||
+      e.clientY < canvasRect.top ||
+      e.clientY > canvasRect.bottom;
+
+    if (isOutsideCanvas) {
+      const particleCount = 15; // Number of particles per explosion
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('smoke-particle');
+
+        // Random size between 20px and 60px
+        const size = Math.floor(Math.random() * 40) + 20;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Random offset to spread particles more widely
+        const offsetX = (Math.random() - 0.5) * 200; // Increased spread
+        const offsetY = (Math.random() - 0.5) * 200;
+
+        particle.style.left = `${clickX + offsetX - size / 2}px`;
+        particle.style.top = `${clickY + offsetY - size / 2}px`;
+
+        // Random RGB color
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        particle.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.2)`;
+
+        wrapper.appendChild(particle);
+
+        // Remove particle after animation
+        particle.addEventListener('animationend', () => {
+          particle.remove();
+        });
+      }
+    }
+  });
+});
+
 
 // 🎨 Original drawBars (your original visualizer)
 function drawBars() {
