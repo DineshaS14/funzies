@@ -42,14 +42,14 @@ function drawBars() {
   let x = 0;
 
   for (let i = 0; i < bufferLength; i++) {
-    const barHeight = dataArray[i] * 1.6;
+    const barHeight = dataArray[i] * 1.5;
 
     const gradient = ctx.createLinearGradient(0, canvas.height - barHeight, 0, canvas.height);
     gradient.addColorStop(0, `hsl(${i * 2}, 100%, 50%)`);
     gradient.addColorStop(1, '#000');
 
     ctx.fillStyle = gradient;
-    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight + 40); //
 
     x += barWidth + 1;
   }
@@ -90,7 +90,7 @@ function drawMirror() {
   let x = 0;
 
   for (let i = 0; i < bufferLength; i++) {
-    const barHeight = dataArray[i] * 1.3;
+    const barHeight = dataArray[i] * .8;
 
     const gradient = ctx.createLinearGradient(0, canvas.height / 2 - barHeight, 0, canvas.height / 2 + barHeight);
     gradient.addColorStop(0, `hsl(${i * 2}, 100%, 50%)`);
