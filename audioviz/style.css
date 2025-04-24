@@ -1,3 +1,7 @@
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 body {
   top: 0%;
   margin: 0;
@@ -120,6 +124,7 @@ canvas {
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    position: relative;
   }
 
   .music-icons {
@@ -134,7 +139,7 @@ canvas {
   }
 
   canvas {
-    width: 90%;
+    width: 80%;
     height: auto;
   }
 }
@@ -145,6 +150,7 @@ canvas {
     flex-direction: column;
     gap: 8px;
     padding: 8px;
+    position: relative;
   }
 
   .music-button img {
@@ -153,7 +159,7 @@ canvas {
   }
 
   canvas {
-    width: 100%;
+    width: 80%;
     height: auto;
   }
 
@@ -169,6 +175,7 @@ canvas {
     flex-direction: column;
     gap: 5px;
     padding: 5px;
+    position: relative;
   }
 
   .music-button img {
@@ -177,7 +184,7 @@ canvas {
   }
 
   canvas {
-    width: 100%;
+    width: 80%;
     height: auto;
   }
 
