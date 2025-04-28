@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Good Evening!!!!</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #d63384;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .gif-container {
+      margin-top: 30px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 5px solid #d63384;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(214, 51, 132, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <h1 id="greeting">I hope you're having fun at work!</h1>
+  <div class="gif-container">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2xnMXAxYW96ZXk1N2w0YXMyMmpnNmVxcDN2bnlmcHB5Y3U3dXdsNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tFSqMSMnzPRTAdvKyr/giphy.gif" alt="Cute Romantic GIF">
+  </div>
+
+  <script>
+    // Function to get URL parameters
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Get the 'name' parameter from the URL
+    const name = getQueryParam('name');
+
+    // Update the greeting if 'name' parameter exists
+    if (name) {
+      const greetingElement = document.getElementById('greeting');
+      greetingElement.textContent = `I hope you're having fun at work, ${name}! `;
+    }
+  </script>
+</body>
+</html>
